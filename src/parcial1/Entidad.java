@@ -27,7 +27,8 @@ abstract public class Entidad {
     
     public void setEnergia(double energia) {
         if (energia <0) {
-            this.energia = 0; 
+            this.energia = 0;
+            this.viva=false;
         }else{
            this.energia = energia; 
         }
