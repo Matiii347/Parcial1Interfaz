@@ -1,0 +1,97 @@
+PS C:\Users\Usuario\Desktop\Parcial1> git init
+Reinitialized existing Git repository in C:/Users/Usuario/Desktop/Parcial1/.git/
+PS C:\Users\Usuario\Desktop\Parcial1> git add .
+PS C:\Users\Usuario\Desktop\Parcial1> git commit -m "Primer commit: Estructura base del simulador de ecosistema"
+[master (root-commit) 542429a] Primer commit: Estructura base del simulador de ecosistema
+ 8 files changed, 1987 insertions(+)
+ create mode 100644 build.xml
+ create mode 100644 manifest.mf
+ create mode 100644 nbproject/build-impl.xml
+ create mode 100644 nbproject/genfiles.properties
+ create mode 100644 nbproject/private/private.properties
+ create mode 100644 nbproject/project.properties
+ create mode 100644 nbproject/project.xml
+ create mode 100644 src/parcial1/Parcial1.java
+PS C:\Users\Usuario\Desktop\Parcial1> git branch -M main
+PS C:\Users\Usuario\Desktop\Parcial1> git remote add origin https:https://github.com/Matiii347/Parcial1Interfaz.git
+PS C:\Users\Usuario\Desktop\Parcial1> git push -u origin main
+fatal: protocol 'https:https' is not supported
+PS C:\Users\Usuario\Desktop\Parcial1> git remote add origin https://github.com/Matiii347/Parcial1Interfaz.git
+error: remote origin already exists.
+PS C:\Users\Usuario\Desktop\Parcial1> git push -u origin main
+fatal: protocol 'https:https' is not supported
+PS C:\Users\Usuario\Desktop\Parcial1> git remote set-url origin https://github.com/Matiii347/Parcial1Interfaz.git
+PS C:\Users\Usuario\Desktop\Parcial1> git remote -v
+origin  https://github.com/Matiii347/Parcial1Interfaz.git (fetch)
+origin  https://github.com/Matiii347/Parcial1Interfaz.git (push)
+PS C:\Users\Usuario\Desktop\Parcial1> git push -u origin main
+To https://github.com/Matiii347/Parcial1Interfaz.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/Matiii347/Parcial1Interfaz.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS C:\Users\Usuario\Desktop\Parcial1> git pull origin main --allow-unrelated-histories
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 7 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (7/7), 3.59 KiB | 94.00 KiB/s, done.
+From https://github.com/Matiii347/Parcial1Interfaz
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+Merge made by the 'ort' strategy.
+ .gitignore | 24 ++++++++++++++++++++++++
+ README.md  | 42 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 66 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+PS C:\Users\Usuario\Desktop\Parcial1> git push -u origin main
+Enumerating objects: 17, done.
+Counting objects: 100% (17/17), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (16/16), 15.98 KiB | 3.99 MiB/s, done.
+Total 16 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/Matiii347/Parcial1Interfaz.git
+   7cdbc09..13b99e7  main -> main
+branch 'main' set up to track 'origin/main'.
+PS C:\Users\Usuario\Desktop\Parcial1> git add .
+PS C:\Users\Usuario\Desktop\Parcial1> git commit -m "Segundo Commit:Clase Abtracta Entidad podriamos decir completa"
+[main 3b68d4d] Segundo Commit:Clase Abtracta Entidad podriamos decir completa
+ 2 files changed, 74 insertions(+), 12 deletions(-)
+ create mode 100644 src/parcial1/Entidad.java
+PS C:\Users\Usuario\Desktop\Parcial1> git push -u origin main
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 872 bytes | 872.00 KiB/s, done.
+Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Matiii347/Parcial1Interfaz.git
+   13b99e7..3b68d4d  main -> main
+branch 'main' set up to track 'origin/main'.
+PS C:\Users\Usuario\Desktop\Parcial1> git add .
+PS C:\Users\Usuario\Desktop\Parcial1> git commit -m "Tercer Commit:Terminada Planta,un arranque con Ecosistema creando la clase Enum Clima"
+[main e2d2201] Tercer Commit:Terminada Planta,un arranque con Ecosistema creando la clase Enum Clima
+ 5 files changed, 67 insertions(+), 1 deletion(-)
+ create mode 100644 nbproject/private/private.xml
+ create mode 100644 src/parcial1/Clima.java
+ create mode 100644 src/parcial1/Ecosistema.java
+ create mode 100644 src/parcial1/Planta.java
+PS C:\Users\Usuario\Desktop\Parcial1> git push -u origin main
+Enumerating objects: 17, done.
+Counting objects: 100% (17/17), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (11/11), 1.48 KiB | 1.48 MiB/s, done.
+Total 11 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/Matiii347/Parcial1Interfaz.git
+   3b68d4d..e2d2201  main -> main
+branch 'main' set up to track 'origin/main'.
+PS C:\Users\Usuario\Desktop\Parcial1>
