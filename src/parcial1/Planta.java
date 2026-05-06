@@ -19,19 +19,22 @@ public class Planta extends Entidad{
     
     @Override
     public void actuar(Ecosistema eco) {
-        
-        
+        if (eco.getClimaActual() != Clima.INVIERNO) {
+            intentarReproduccion(eco);
+        }
     }
 
     @Override
     public void mostrarEstado() {
-        System.out.println("Nombre :"+getNombre()+",tamanio: "+getTamanio()+" y su energia es de: "+getEnergia());
+        System.out.println("Nombre: "+getNombre()+",tamanio: "+getTamanio()+" y su energia es de: "+getEnergia());
     }
     
     public int serComida(){
         int valorN=getTamanio()*10;
         this.setEnergia(0);
+        this.setViva(false);
         return valorN;
     }
+    
     
 }
