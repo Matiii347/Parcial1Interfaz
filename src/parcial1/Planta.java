@@ -1,6 +1,6 @@
 package parcial1;
 
-public class Planta extends Entidad{
+public class Planta extends Entidad implements Reproducible{
     private int tamanio;
 
     public Planta(int tamanio, String nombre, double energia, int edad, boolean viva) {
@@ -34,6 +34,16 @@ public class Planta extends Entidad{
         this.setEnergia(0);
         this.setViva(false);
         return valorN;
+    }
+
+    @Override
+    public void reproducirse(Ecosistema eco) {
+        
+    }
+
+    @Override
+    public boolean puedeReproducirse() {
+        return isViva() && getEnergia() >=30;
     }
     
     
