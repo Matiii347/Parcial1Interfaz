@@ -3,62 +3,120 @@ package parcial1;
 import java.util.ArrayList;
 
 public class Ecosistema {
-    ArrayList<Planta>Plantas;
-    ArrayList<Conejo>Conejos;
-    ArrayList<Lobo>Lobos;
-    Clima climaActual;
-    int turnoActaul;
 
-    public Ecosistema(ArrayList<Planta> Plantas, ArrayList<Conejo> Conejos, ArrayList<Lobo> Lobos, Clima climaActual, int turnoActaul) {
-        this.Plantas = Plantas;
-        this.Conejos = Conejos;
-        this.Lobos = Lobos;
-        this.climaActual = climaActual;
-        this.turnoActaul = turnoActaul;
+    private ArrayList<Planta> plantas;
+    private ArrayList<Conejo> conejos;
+    private ArrayList<Lobo> lobos;
+    private Clima climaActual;
+    private int turnoActual;
+
+    public Ecosistema(
+            ArrayList<Planta> plantas,
+            ArrayList<Conejo> conejos,
+            ArrayList<Lobo> lobos,
+            Clima climaInicial) {
+        this.plantas = plantas;
+        this.conejos = conejos;
+        this.lobos = lobos;
+        this.climaActual = climaInicial;
+        this.turnoActual = 1;
     }
 
-    public void setPlantas(ArrayList<Planta> Plantas) {
-        this.Plantas = Plantas;
+    public void agregarEntidad(String tipo) {
+        double energiaBase = 50.0; 
+        agregarEntidad(tipo, energiaBase);
     }
 
-    public void setConejos(ArrayList<Conejo> Conejos) {
-        this.Conejos = Conejos;
+    public void agregarEntidad(String tipo, double energiaInicial) {
+        tipo = tipo.toLowerCase(); 
+
+    switch (tipo) {
+        case "planta":
+            // Creamos planta con tamaño 3 por defecto [cite: 76]
+            plantas.add(new Planta(3, "Planta_" + (plantas.size() + 1), energiaInicial, 0, true));
+            System.out.println("Sistema: Se ha añadido una nueva planta."); [cite: 170]
+            break;
+
+        case "conejo":
+            //ACA ASUMIMOS Q CONEJO VA A SER ALGO ASI:
+            conejos.add(new Conejo("Conejo_" + (conejos.size() + 1), energiaInicial, 0, true));
+            System.out.println("Sistema: Se ha añadido un nuevo conejo.");
+            break;
+
+        case "lobo":
+            // VALIDAR MAXIMO 5 LOBOS EN TODA LA SIMULACION
+            if (lobos.size() < 5) {
+                lobos.add(new Lobo("Lobo_" + (lobos.size() + 1), energiaInicial, 0, true));
+                System.out.println("Sistema: Se ha añadido un nuevo lobo.");
+            } else {
+                System.out.println("ERROR: No se pueden agregar más de 5 lobos en total."); 
+            }
+            break;
+
+        default:
+            System.out.println("Error: Tipo de entidad " " + tipo + " " no reconocido.");
+            break;
     }
 
-    public void setLobos(ArrayList<Lobo> Lobos) {
-        this.Lobos = Lobos;
+    public void procesarTurno() {
+        
     }
 
-    public void setClimaActual(Clima climaActual) {
-        this.climaActual = climaActual;
+    public void mostrarEstado() {
+        
     }
 
-    public void setTurnoActaul(int turnoActaul) {
-        this.turnoActaul = turnoActaul;
+    public void cambiarClima(Clima nuevo) {
+        
+    }
+
+    
+    public boolean ecosistemaColapsado() {
+        
+        return false;
+    }
+
+    public void generarReporteFinal() {
+        
     }
 
     public ArrayList<Planta> getPlantas() {
-        return Plantas;
+        return plantas;
+    }
+
+    public void setPlantas(ArrayList<Planta> plantas) {
+        this.plantas = plantas;
     }
 
     public ArrayList<Conejo> getConejos() {
-        return Conejos;
+        return conejos;
+    }
+
+    public void setConejos(ArrayList<Conejo> conejos) {
+        this.conejos = conejos;
     }
 
     public ArrayList<Lobo> getLobos() {
-        return Lobos;
+        return lobos;
+    }
+
+    public void setLobos(ArrayList<Lobo> lobos) {
+        this.lobos = lobos;
     }
 
     public Clima getClimaActual() {
         return climaActual;
     }
 
-    public int getTurnoActaul() {
-        return turnoActaul;
+    public void setClimaActual(Clima climaActual) {
+        this.climaActual = climaActual;
     }
-    
-    
-    
-    
-    
+
+    public int getTurnoActual() {
+        return turnoActual;
+    }
+
+    public void setTurnoActual(int turnoActual) {
+        this.turnoActual = turnoActual;
+    }
 }
