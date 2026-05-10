@@ -45,6 +45,11 @@ public class Planta extends Entidad implements Reproducible{
     public boolean puedeReproducirse() {
         return isViva() && getEnergia() >=30;
     }
+
+    @Override
+    public void intentarReproduccion(Ecosistema eco) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 }

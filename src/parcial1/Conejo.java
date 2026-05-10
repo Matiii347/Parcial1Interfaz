@@ -1,5 +1,6 @@
 package parcial1;
 
+
 public class Conejo extends Animal implements Reproducible{
 
     public Conejo (String nombre, double energia, int edad, boolean viva, int velocidad, double peso){
@@ -83,4 +84,16 @@ public class Conejo extends Animal implements Reproducible{
             System.out.println(getNombre() + " se reprodujo.");
         }
     }
+
+    @Override
+    public boolean puedeReproducirse() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void intentarReproduccion(Ecosistema eco) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
+
+

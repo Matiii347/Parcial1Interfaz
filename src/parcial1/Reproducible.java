@@ -1,12 +1,13 @@
 package parcial1;
 
+
 public interface Reproducible {
-    void reproducirse(Ecosistema eco);
-    boolean puedeReproducirse();
     
-    default void intentarReproduccion(Ecosistema eco) {
-        if (puedeReproducirse()) {
-            reproducirse(eco);
-        }
-    }
+    void reproducirse (Ecosistema eco);
+            
+    boolean puedeReproducirse();
+        
+    void intentarReproduccion(Ecosistema eco);
+      
 }
+
