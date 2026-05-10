@@ -91,4 +91,14 @@ public class Lobo extends Animal{
         System.out.println("Cacerías exitosas: " + this.exitosCaza);
     
     }
+
+    @Override
+    public boolean estaVivo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void morir() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
