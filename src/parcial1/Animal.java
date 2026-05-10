@@ -24,4 +24,14 @@ public abstract class Animal extends Entidad implements Mortal{
     public void moverse(){
         System.out.println(getNombre() + "se desplazo");
     }
+    
+    @Override
+    public boolean estaVivo() {
+        return isViva(); // Llama al método que ya existe en Entidad
+    }
+    @Override
+    public void morir() {
+        setViva(false); // Heredado de Entidad
+        setEnergia(0);  // Heredado de Entidad
+    }
 }

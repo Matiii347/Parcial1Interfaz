@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Lobo extends Animal{
+public class Lobo extends Animal implements Reproducible{
     
     private int exitosCaza;
    
@@ -94,11 +94,29 @@ public class Lobo extends Animal{
 
     @Override
     public boolean estaVivo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    return isViva();    
     }
 
     @Override
     public void morir() {
+    setViva(false);
+        setEnergia(0);    
+    }
+
+    @Override
+    public void reproducirse(Ecosistema eco) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean puedeReproducirse() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void intentarReproduccion(Ecosistema eco) {
+        if (puedeReproducirse()) {
+            reproducirse(eco);
+        }
     }
 }

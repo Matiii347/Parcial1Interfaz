@@ -7,7 +7,11 @@ public interface Reproducible {
             
     boolean puedeReproducirse();
         
-    void intentarReproduccion(Ecosistema eco);
+    default void intentarReproduccion(Ecosistema eco) {
+        if (puedeReproducirse()) {
+            reproducirse(eco);
+        }
+    }
       
 }
 

@@ -21,7 +21,7 @@ public class Conejo extends Animal implements Reproducible{
         
         for (Planta p : eco.getPlantas()){
         
-        if (p.estaViva()){
+        if (p.isViva()){
             plantaEncontrada = p;
             break;
         }
@@ -29,15 +29,15 @@ public class Conejo extends Animal implements Reproducible{
         
         if (plantaEncontrada != null){
             
-            plantaEncontrada.morir();
+            plantaEncontrada.serComida();
             
-            energia += 20;
+            setEnergia(getEnergia() + 20);
             
             System.out.println(getNombre() + " comio una planta.");
             
         } else {
             
-            energia -= 15;
+            setEnergia(getEnergia() - 15);
             
             System.out.println(getNombre() + " no encontro comida y perdio energia.");
         }
@@ -48,9 +48,8 @@ public class Conejo extends Animal implements Reproducible{
     
         System.out.println("Nombre: " + getNombre());
         
-        System.out.println("Energia: " + energia);
-        
-        if (energia < 20){
+        System.out.println("Energia: " + getEnergia());        
+        if (getEnergia() < 20){
             System.out.println("Esta en peligro");
         }else {
             System.out.println("Esta estable");
@@ -62,52 +61,57 @@ public class Conejo extends Animal implements Reproducible{
     
         int cantidadConejos = 0;
         
-        for (Animal a: eco.getAnimales()){
+        for (Animal a: eco.getConejos()){
         
             if(a instanceof Conejo && a.estaVivo()){
                 cantidadConejos++;
             }
         }
         
-        if (energia > 60 && cantidadConejos >= 2){
+        if (getEnergia() > 60 && cantidadConejos >= 2){
         
             Conejo bebe = new Conejo(
                     "ConejoBebe",
                     40,
+                    0,
                     true,
                     velocidad,
                     peso
             );
             
-            eco.agregarAnimal(bebe);
+            eco.getConejos().add(bebe);
             
             System.out.println(getNombre() + " se reprodujo.");
         }
     }
 
     @Override
-    public boolean puedeReproducirse() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public void intentarReproduccion(Ecosistema eco) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (puedeReproducirse()) {
+            reproducirse(eco);
+        }
     }
 
+   
     @Override
     public boolean estaVivo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    return isViva();    
     }
 
     @Override
     public void morir() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    setViva(false);
+        setEnergia(0);    
     }
 
     @Override
     public boolean verificarMuerte() {
         return super.verificarMuerte(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+    @Override
+    public boolean puedeReproducirse() {
+    return isViva() && getEnergia() > 60;
     }
 }
 

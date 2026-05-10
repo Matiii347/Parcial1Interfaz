@@ -34,19 +34,19 @@ public class Ecosistema {
         case "planta":
             // Creamos planta con tamaño 3 por defecto [cite: 76]
             plantas.add(new Planta(3, "Planta_" + (plantas.size() + 1), energiaInicial, 0, true));
-            System.out.println("Sistema: Se ha añadido una nueva planta."); [cite: 170]
+            System.out.println("Sistema: Se ha añadido una nueva planta.");
             break;
 
         case "conejo":
             //ACA ASUMIMOS Q CONEJO VA A SER ALGO ASI:
-            conejos.add(new Conejo("Conejo_" + (conejos.size() + 1), energiaInicial, 0, true));
+            conejos.add(new Conejo("Conejo_" + (conejos.size() + 1), energiaInicial, 0, true,10,5.0));
             System.out.println("Sistema: Se ha añadido un nuevo conejo.");
             break;
 
         case "lobo":
             // VALIDAR MAXIMO 5 LOBOS EN TODA LA SIMULACION
             if (lobos.size() < 5) {
-                lobos.add(new Lobo("Lobo_" + (lobos.size() + 1), energiaInicial, 0, true));
+                lobos.add(new Lobo("Lobo_" + (lobos.size() + 1), energiaInicial, 0, true,15,30.0));
                 System.out.println("Sistema: Se ha añadido un nuevo lobo.");
             } else {
                 System.out.println("ERROR: No se pueden agregar más de 5 lobos en total."); 
@@ -54,10 +54,10 @@ public class Ecosistema {
             break;
 
         default:
-            System.out.println("Error: Tipo de entidad " " + tipo + " " no reconocido.");
+            System.out.println("Error: Tipo de entidad " + " tipo  " + " no reconocido.");
             break;
+        }
     }
-
     public void procesarTurno() {
         
     }
