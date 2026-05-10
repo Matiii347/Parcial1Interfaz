@@ -40,6 +40,11 @@ public class Lobo extends Animal{
 
             probabilidadExito = probabilidadExito + 20;
         }
+        
+         if (eco.getClimaActual() == Clima.LLUVIOSO){
+
+            probabilidadExito = probabilidadExito - 5;
+        }
 
         if (probabilidadExito > 100){
 
@@ -90,7 +95,7 @@ public class Lobo extends Animal{
 
             eco.registrarEvento("El lobo " + getNombre() + " cazó y devoró a " + conejoCazado.getNombre());
 
-            setEnergia(getEnergia() + 20);
+            setEnergia(getEnergia() + 30);
         }
     }
 
