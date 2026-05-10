@@ -1,5 +1,7 @@
 package parcial1;
 
+import java.util.Random;
+
 public class Planta extends Entidad implements Reproducible{
     private int tamanio;
 
@@ -38,7 +40,34 @@ public class Planta extends Entidad implements Reproducible{
 
     @Override
     public void reproducirse(Ecosistema eco) {
+        if (eco.getClimaActual() == Clima.INVIERNO) return; // Invierno: no se reproducen
+
+        int nuevas = 1; // Default
         
+        // Modificador según clima
+        switch(eco.getClimaActual()) {
+            case SOLEADO: 
+                // x1.5 (probabilidad 50% de que nazca 1 más)
+                if (new Random().nextBoolean()) nuevas = 2; 
+                break;
+            case LLUVIOSO: 
+                // x2 
+                nuevas = 2; 
+                break;
+            case SEQUIA: 
+                // x0.5 (probabilidad 50% de que nazca 1, si no 0)
+                nuevas = (new Random().nextBoolean()) ? 1 : 0; 
+                break;
+        }
+        
+        for (int i = 0; i < nuevas; i++) {
+            Planta nuevaP = new Planta(3, getNombre() + "_H", 30, 0, true);
+            eco.getPlantas().add(nuevaP);
+            eco.registrarNacimiento("planta");
+            eco.registrarEvento(getNombre() + " generó una nueva planta hija.");
+        }
+        
+        setEnergia(getEnergia() - 15); // Costo de reproducirse
     }
 
     @Override
