@@ -1,3 +1,4 @@
+Charla con la IA(Funes)
 https://gemini.google.com/share/64c6b29b4980
 https://chatgpt.com/share/6a00e91c-ae20-83e9-bed3-10b98f583e18
 https://gemini.google.com/share/c5ff8ad45120
