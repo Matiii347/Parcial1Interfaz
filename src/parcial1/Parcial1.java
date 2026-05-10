@@ -67,15 +67,15 @@ public static void main(String[] args) {
         
         for (int i = 0; i < numPlantas; i++) {
             // Energía aleatoria entre 30 y 80
-            plantasIniciales.add(new Planta(3, "Planta_I" + i, 30 + rand.nextInt(51), 0, true));
+            plantasIniciales.add(new Planta(3, "Planta_" + i, 30 + rand.nextInt(51), 0, true));
         }
         for (int i = 0; i < numConejos; i++) {
             // Energía aleatoria entre 50 y 100
-            conejosIniciales.add(new Conejo("Conejo_I" + i, 50 + rand.nextInt(51), 0, true, 10, 5.0));
+            conejosIniciales.add(new Conejo("Conejo_" + i, 50 + rand.nextInt(51), 0, true, 10, 5.0));
         }
         for (int i = 0; i < numLobos; i++) {
             // Energía aleatoria entre 80 y 150
-            lobosIniciales.add(new Lobo("Lobo_I" + i, 80 + rand.nextInt(71), 0, true, 15, 30.0));
+            lobosIniciales.add(new Lobo("Lobo_" + i, 80 + rand.nextInt(71), 0, true, 15, 30.0));
         }
         
         Ecosistema ecosistema = new Ecosistema(plantasIniciales, conejosIniciales, lobosIniciales, climaInicial);
