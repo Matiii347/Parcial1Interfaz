@@ -47,11 +47,18 @@ public class Conejo extends Animal implements Reproducible{
         System.out.println("Nombre: " + getNombre() + " | Energía: " + getEnergia() );
 
     }
-@Override
+    
+    @Override
     public boolean puedeReproducirse() {
         return isViva() && getEnergia() > 60;
     }
-
+    
+    @Override
+    public void intentarReproduccion(Ecosistema eco) {
+        if (puedeReproducirse()) {
+            reproducirse(eco);
+        }
+    }
     @Override
     public void reproducirse(Ecosistema eco){
 
