@@ -56,6 +56,24 @@ Definición de la Interfaz Mortal para la lógica de fallecimiento.
 
 Desarrollo de la clase Ecosistema (gestión de ciclos y contenedores).
 
+Clase "Ecosistema" e Interface "Mortal"
+Interfaz grafica
+simulador de ecosistema - java
+------>proyecto desarrollado para la 1ra instancia evaluativa
+	El programa simula un ecosistema por turnos donde interactuan plantas, conejos y lobos bajo diferentes condiciones climaticas.
+	Las funcionalidades principales son: 
+	simulacion por turnos: control total del ciclo de vida de las entidades (nacer, comer, reproducirse y morir).
+	sistema de clima: efectos reales de soleado, lluvioso, sequia e invierno que afectan la energia y reproduccion.  
+	intervencion: cada 3 turnos el usuario puede cambiar el clima o agregar nuevas entidades. 
+	reporte final: estadisticas detalladas sobre muertes, nacimientos, longevidad y eventos maximos.
+------>Personalmente me trabe un rato en el Metodo procesarTurno() ya que era el motor de la simulacion y habia que pensarlo bastante. 
+"Mortal" lo pude desarrollar con mas facilidad ya que la complejidad era menor.
+------>conceptos de poo aplicados 
+		Herencia y clases abstractas: uso de una clase base entidad y una intermedia animal. 
+		Interfaces y polimorfismo: implementacion de reproducible y mortal para gestionar comportamientos comunes de forma eficiente.  
+		Encapsulamiento: todos los atributos son privados con sus respectivos getters y setters validados. 
+		Sobrecarga: metodos para agregar entidades con diferentes parametros de entrada.  
+------>Adjunto mi charla con la ia, use Gemini: https://gemini.google.com/share/0eb02163b5e6
 
 
 Desarrollo del Main (Lógica Global)
