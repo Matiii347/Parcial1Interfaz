@@ -32,6 +32,12 @@ Implementación de la clase abstracta Animal.
 
 Desarrollo de la clase concreta Conejo.
 
+Durante la realización del proyecto me encargué de desarrollar la lógica de Animal como base para los distintos animales del ecosistema y de implementar el comportamiento del Conejo, principalmente en los métodos de acción, alimentación y reproducción.
+
+Lo que me resulto más complicado del proyecto fue entender la interacción entre las clases y cómo debían comunicarse con Ecosistema. Por ejemplo, dentro de Conejo, métodos como comer() y actuar() necesitan interactuar con el ecosistema para recorrer listas de plantas, verificar recursos disponibles y registrar eventos.
+
+Esta fue mi conversación con ChatGPT para el proyecto: https://chatgpt.com/share/69ffe67e-b4b8-83e9-889e-9e10de51d439
+
 Valentin Gonzalez:
 
 Implementación de la clase concreta Lobo.
