@@ -1,4 +1,4 @@
-package parcial1;
+package parcial1.modelo;
 
 public enum Clima {
     SOLEADO,

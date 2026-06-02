@@ -1,5 +1,7 @@
-package parcial1;
+package parcial1.modelo;
 
+import parcial1.modelo.Ecosistema;
+import parcial1.modelo.Clima;
 import java.util.Random;
 
 public class Planta extends Entidad implements Reproducible{

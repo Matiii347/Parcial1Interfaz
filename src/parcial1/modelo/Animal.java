@@ -1,4 +1,4 @@
-package parcial1;
+package parcial1.modelo;
 
 public abstract class Animal extends Entidad implements Mortal{
     

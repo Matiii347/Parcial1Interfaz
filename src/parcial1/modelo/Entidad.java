@@ -1,4 +1,6 @@
-package parcial1;
+package parcial1.modelo;
+
+import parcial1.modelo.Ecosistema;
 
 abstract public class Entidad {
     private String nombre;

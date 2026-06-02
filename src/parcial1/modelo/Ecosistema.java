@@ -1,5 +1,7 @@
-package parcial1;
+package parcial1.modelo;
 
+import parcial1.modelo.Conejo;
+import parcial1.modelo.Clima;
 import java.util.ArrayList;
 
 public class Ecosistema {
