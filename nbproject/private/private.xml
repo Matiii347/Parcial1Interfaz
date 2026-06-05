@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Desktop/Parcial1/src/parcial1/Parcial1.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Parcial1/src/parcial1/Planta.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Parcial1/src/parcial1/Entidad.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Parcial1/src/parcial1/Reproducible.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Parcial1/src/parcial1/modelo/Parcial1.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Parcial1/src/parcial1/controlador/SimuladorController.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Parcial1/src/parcial1/dao/EcosistemaDAO.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Parcial1/src/parcial1/dao/EcossitemaDAOImpl.java</file>
         </group>
     </open-files>
 </project-private>

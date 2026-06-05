@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package parcial1.dao;
 
-/**
- *
- * @author Usuario
- */
+import parcial1.modelo.Ecosistema;
+
 public interface EcosistemaDAO {
-    
+    void guardarEstado(Ecosistema ecosistema);
+    Ecosistema cargarEstado();
 }

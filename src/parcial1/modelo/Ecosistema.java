@@ -1,10 +1,11 @@
 package parcial1.modelo;
 
+import java.io.Serializable;
 import parcial1.modelo.Conejo;
 import parcial1.modelo.Clima;
 import java.util.ArrayList;
 
-public class Ecosistema {
+public class Ecosistema implements Serializable{
 
     private ArrayList<Planta> plantas;
     private ArrayList<Conejo> conejos;

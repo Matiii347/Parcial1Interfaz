@@ -1,8 +1,9 @@
 package parcial1.modelo;
 
+import java.io.Serializable;
 import parcial1.modelo.Ecosistema;
 
-abstract public class Entidad {
+abstract public class Entidad implements Serializable{
     private String nombre;
     private double energia;
     private int edad;
