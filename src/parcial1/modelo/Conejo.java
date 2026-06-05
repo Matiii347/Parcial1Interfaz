@@ -30,14 +30,25 @@ public class Conejo extends Animal implements Reproducible{
         }
 
         if (plantaEncontrada != null){
-
-            int valorNutritivo = plantaEncontrada.serComida();
-            setEnergia(getEnergia() + valorNutritivo);
-            eco.registrarMuerte("planta");
-            eco.registrarEvento(getNombre() + " comió una planta y ganó " + valorNutritivo + " de energía.");
+            
+            // NUEVA LÓGICA: Verificamos de qué tipo de planta se trata
+            if (plantaEncontrada instanceof PlantaVenenosa) {
+                int dano = plantaEncontrada.serComida(); // Esto ahora devuelve un número negativo
+                setEnergia(getEnergia() + dano); // Como es negativo, matemáticamente se resta
+                eco.registrarMuerte("planta");
+                
+                // REQUISITO DEL PDF CUMPLIDO ACÁ:
+                eco.registrarEvento("¡Alerta! " + getNombre() + " comió una Planta Venenosa y se intoxicó.");
+                
+            } else {
+                // Lógica normal que ya tenías
+                int valorNutritivo = plantaEncontrada.serComida();
+                setEnergia(getEnergia() + valorNutritivo);
+                eco.registrarMuerte("planta");
+                eco.registrarEvento(getNombre() + " comió una planta y ganó " + valorNutritivo + " de energía.");
+            }
 
         } else {
-
             setEnergia(getEnergia() - 15);
             System.out.println(getNombre() + " no encontro comida y perdio energia.");
         }
