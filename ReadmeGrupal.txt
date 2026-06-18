@@ -28,6 +28,12 @@ Desarrollo de la clase Planta.
 
 Manuel Molinero:
 
+2 Parcial: 
+Implementacion y creacion de la pantalla inicial, osea el simulador de ecosistema que permita al usuario configurar las condiciones iniciales de la simulación antes de ejecutarla.
+
+Esta fue mi conversación con ChatGPT para el proyecto: https://chatgpt.com/c/6a30653c-b2ac-83e9-8269-6298329dd29d
+
+1 Parcial:
 Implementación de la clase abstracta Animal.
 
 Desarrollo de la clase concreta Conejo.
