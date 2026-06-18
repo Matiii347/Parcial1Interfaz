@@ -63,6 +63,7 @@ public class Planta extends Entidad implements Reproducible{
         }
         
         for (int i = 0; i < nuevas; i++) {
+            if (eco.getEntidadesVivas().size() >= 225) break;
             Planta nuevaP = new Planta(3, getNombre() + "_H", 30, 0, true);
             eco.getPlantas().add(nuevaP);
             eco.registrarNacimiento("planta");
@@ -79,8 +80,10 @@ public class Planta extends Entidad implements Reproducible{
 
    @Override
     public void intentarReproduccion(Ecosistema eco) {
-        if (puedeReproducirse()) {
-            reproducirse(eco);
+        if (eco.getEntidadesVivas().size() < 225) {
+            if (puedeReproducirse()) {
+                reproducirse(eco);
+            }
         }
     }
     

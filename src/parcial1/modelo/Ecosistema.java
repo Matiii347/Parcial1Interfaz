@@ -12,6 +12,7 @@ public class Ecosistema implements Serializable{
     private ArrayList<Lobo> lobos;
     private Clima climaActual;
     private int turnoActual;
+    private int totalTurnos = 20; // Nuevo campo para persistir el límite de turnos
     
     // Estadísticas
     private int nacimientosPlantas = 0, muertesPlantas = 0;
@@ -20,6 +21,11 @@ public class Ecosistema implements Serializable{
     private int turnoMayorActividad = 0;
     private int maxEventos = -1;
     private int eventosTurnoActual = 0;
+    
+    private ArrayList<Integer> historialPlantas = new ArrayList<>();
+    private ArrayList<Integer> historialConejos = new ArrayList<>();
+    private ArrayList<Integer> historialLobos = new ArrayList<>();
+    private ArrayList<String> eventosTurnoActualList = new ArrayList<>();
 
     public Ecosistema(ArrayList<Planta> plantas, ArrayList<Conejo> conejos, ArrayList<Lobo> lobos, Clima climaInicial) {
         this.plantas = plantas;
@@ -27,6 +33,7 @@ public class Ecosistema implements Serializable{
         this.lobos = lobos;
         this.climaActual = climaInicial;
         this.turnoActual = 1;
+        registrarHistorial(); // Registra estado inicial (Turno 0)
     }
     
     public ArrayList<Planta> getPlantas() {
@@ -69,9 +76,18 @@ public class Ecosistema implements Serializable{
         this.turnoActual = turnoActual;
     }
 
+    public int getTotalTurnos() {
+        return totalTurnos;
+    }
+
+    public void setTotalTurnos(int totalTurnos) {
+        this.totalTurnos = totalTurnos;
+    }
+
     public void registrarEvento(String evento) {
         System.out.println("  -> " + evento);
         eventosTurnoActual++;
+        eventosTurnoActualList.add(evento);
     }
 
     public void registrarNacimiento(String tipo) {
@@ -91,6 +107,10 @@ public class Ecosistema implements Serializable{
     }
 
     public void agregarEntidad(String tipo, double energiaInicial) {
+        if (getEntidadesVivas().size() >= 225) {
+            registrarEvento("ERROR: No se puede agregar entidad. La grilla está llena.");
+            return;
+        }
         tipo = tipo.toLowerCase(); 
         switch (tipo) {
             case "planta":
@@ -114,9 +134,86 @@ public class Ecosistema implements Serializable{
                 break;
         }
     }
+
+    public void asegurarPosiciones() {
+        boolean[][] ocupado = new boolean[15][15];
+        ArrayList<Entidad> vivas = getEntidadesVivas();
+        for (Entidad e : vivas) {
+            if (e.getFila() >= 0 && e.getFila() < 15 && e.getColumna() >= 0 && e.getColumna() < 15) {
+                ocupado[e.getFila()][e.getColumna()] = true;
+            }
+        }
+        java.util.Random rand = new java.util.Random();
+        for (Entidad e : vivas) {
+            if (e.getFila() < 0 || e.getFila() >= 15 || e.getColumna() < 0 || e.getColumna() >= 15) {
+                int intentos = 0;
+                while (intentos < 500) {
+                    int r = rand.nextInt(15);
+                    int c = rand.nextInt(15);
+                    if (!ocupado[r][c]) {
+                        e.setFila(r);
+                        e.setColumna(c);
+                        ocupado[r][c] = true;
+                        break;
+                    }
+                    intentos++;
+                }
+            }
+        }
+    }
+
+    public void moverAnimales() {
+        boolean[][] ocupado = new boolean[15][15];
+        ArrayList<Entidad> vivas = getEntidadesVivas();
+        for (Entidad e : vivas) {
+            if (e.getFila() >= 0 && e.getFila() < 15 && e.getColumna() >= 0 && e.getColumna() < 15) {
+                ocupado[e.getFila()][e.getColumna()] = true;
+            }
+        }
+        java.util.Random rand = new java.util.Random();
+        int[] dr = {-1, 1, 0, 0, -1, -1, 1, 1};
+        int[] dc = {0, 0, -1, 1, -1, 1, -1, 1};
+        for (Entidad e : vivas) {
+            if (e instanceof Animal) {
+                int rActual = e.getFila();
+                int cActual = e.getColumna();
+                if (rActual >= 0 && rActual < 15 && cActual >= 0 && cActual < 15) {
+                    ArrayList<Integer> opcionesValidas = new ArrayList<>();
+                    for (int i = 0; i < dr.length; i++) {
+                        int nr = rActual + dr[i];
+                        int nc = cActual + dc[i];
+                        if (nr >= 0 && nr < 15 && nc >= 0 && nc < 15 && !ocupado[nr][nc]) {
+                            opcionesValidas.add(i);
+                        }
+                    }
+                    if (!opcionesValidas.isEmpty()) {
+                        int chosen = opcionesValidas.get(rand.nextInt(opcionesValidas.size()));
+                        int nr = rActual + dr[chosen];
+                        int nc = cActual + dc[chosen];
+                        ocupado[rActual][cActual] = false;
+                        e.setFila(nr);
+                        e.setColumna(nc);
+                        ocupado[nr][nc] = true;
+                        ((Animal) e).moverse();
+                    }
+                }
+            }
+        }
+    }
+
+    public ArrayList<Entidad> getEntidadesVivas() {
+        ArrayList<Entidad> vivas = new ArrayList<>();
+        for (Planta p : plantas) if (p.isViva()) vivas.add(p);
+        for (Conejo c : conejos) if (c.isViva()) vivas.add(c);
+        for (Lobo l : lobos) if (l.isViva()) vivas.add(l);
+        return vivas;
+    }
+
     public void procesarTurno() {
+        asegurarPosiciones();
         System.out.println("\n=== INICIO TURNO " + turnoActual + " | Clima: " + climaActual + " ===");
         eventosTurnoActual = 0;
+        eventosTurnoActualList.clear();
 
         // 1. Iterar Reproducibles usando Polimorfismo
         ArrayList<Reproducible> reproducibles = new ArrayList<>();
@@ -175,6 +272,9 @@ public class Ecosistema implements Serializable{
         }
 
         mostrarEstado();
+        moverAnimales();
+        asegurarPosiciones(); // Asigna posiciones a recién nacidos antes de pintar
+        registrarHistorial();
         turnoActual++;
     }
 
@@ -228,5 +328,37 @@ public class Ecosistema implements Serializable{
         System.out.println("===============================================");
     }
 
-    
+    public void registrarHistorial() {
+        int p = (int) plantas.stream().filter(Planta::isViva).count();
+        int c = (int) conejos.stream().filter(Conejo::isViva).count();
+        int l = (int) lobos.stream().filter(Lobo::isViva).count();
+        historialPlantas.add(p);
+        historialConejos.add(c);
+        historialLobos.add(l);
+    }
+
+    public ArrayList<Integer> getHistorialPlantas() {
+        return historialPlantas;
+    }
+
+    public ArrayList<Integer> getHistorialConejos() {
+        return historialConejos;
+    }
+
+    public ArrayList<Integer> getHistorialLobos() {
+        return historialLobos;
+    }
+
+    public ArrayList<String> getEventosTurnoActualList() {
+        return eventosTurnoActualList;
+    }
+
+    public int getNacimientosPlantas() { return nacimientosPlantas; }
+    public int getMuertesPlantas() { return muertesPlantas; }
+    public int getNacimientosConejos() { return nacimientosConejos; }
+    public int getMuertesConejos() { return muertesConejos; }
+    public int getNacimientosLobos() { return nacimientosLobos; }
+    public int getMuertesLobos() { return muertesLobos; }
+    public int getTurnoMayorActividad() { return turnoMayorActividad; }
+    public int getMaxEventos() { return maxEventos; }
 }

@@ -10,8 +10,10 @@ public interface Reproducible {
     boolean puedeReproducirse();
         
     default void intentarReproduccion(Ecosistema eco) {
-        if (puedeReproducirse()) {
-            reproducirse(eco);
+        if (eco.getEntidadesVivas().size() < 225) {
+            if (puedeReproducirse()) {
+                reproducirse(eco);
+            }
         }
     }
       

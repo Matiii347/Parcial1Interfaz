@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Lobo extends Animal{
+public class Lobo extends Animal implements Peligroso{
 
     private int exitosCaza;
 
@@ -116,8 +116,12 @@ public class Lobo extends Animal{
 
     @Override
     public void morir() {
-    setViva(false);
+        setViva(false);
         setEnergia(0);
     }
 
+    @Override
+    public int getNivelPeligro() {
+        return 5;
+    }
 }

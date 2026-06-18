@@ -4,7 +4,7 @@ package parcial1.modelo;
  *
  * @author Usuario
  */
-public class PlantaVenenosa extends Planta{
+public class PlantaVenenosa extends Planta implements Peligroso {
     
     public PlantaVenenosa(int tamanio, String nombre, double energia, int edad, boolean viva) {
         super(tamanio, nombre, energia, edad, viva);
@@ -17,5 +17,8 @@ public class PlantaVenenosa extends Planta{
          return -50;
     }
     
-    
+    @Override
+    public int getNivelPeligro() {
+        return 3;
+    }
 }

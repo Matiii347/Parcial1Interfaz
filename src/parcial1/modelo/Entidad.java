@@ -8,6 +8,8 @@ abstract public class Entidad implements Serializable{
     private double energia;
     private int edad;
     private boolean viva;
+    private int fila = -1;
+    private int columna = -1;
 
     public Entidad(String nombre, double energia, int edad, boolean viva) {
         this.nombre = nombre;
@@ -15,6 +17,11 @@ abstract public class Entidad implements Serializable{
         this.edad = edad;
         this.viva = viva;
     }
+
+    public int getFila() { return fila; }
+    public void setFila(int fila) { this.fila = fila; }
+    public int getColumna() { return columna; }
+    public void setColumna(int columna) { this.columna = columna; }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

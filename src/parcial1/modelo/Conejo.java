@@ -68,8 +68,10 @@ public class Conejo extends Animal implements Reproducible{
     
     @Override
     public void intentarReproduccion(Ecosistema eco) {
-        if (puedeReproducirse()) {
-            reproducirse(eco);
+        if (eco.getEntidadesVivas().size() < 225) {
+            if (puedeReproducirse()) {
+                reproducirse(eco);
+            }
         }
     }
     @Override
@@ -84,7 +86,7 @@ public class Conejo extends Animal implements Reproducible{
             }
         }
 
-         if (cantidadConejos >= 2 && new java.util.Random().nextInt(100) < 30){
+         if (eco.getEntidadesVivas().size() < 225 && cantidadConejos >= 2 && new java.util.Random().nextInt(100) < 30){
             String nombreBebe = "ConejoBebe_" + (eco.getConejos().size() + 1);
             Conejo bebe = new Conejo(nombreBebe, 40, 0, true, velocidad, peso);
             eco.getConejos().add(bebe);
