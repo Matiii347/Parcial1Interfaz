@@ -107,3 +107,4 @@ La clase Main fue desarrollada de manera colaborativa por todo el equipo. Debido
 VIDEO
 https://drive.google.com/drive/folders/1A9GxJIoVLE6qyRDYI4ZzXYU1i6QfSff7
 
+FIGMA=https://www.figma.com/make/u0vbt80AFGKpNg29387FwO/Ecosystem-Simulation-App?t=sZzXzn1SRoDkYrcM-20&fullscreen=1
