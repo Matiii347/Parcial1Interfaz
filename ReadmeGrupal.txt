@@ -21,10 +21,10 @@ Reparto de Responsabilidades y Arquitectura
 Para la organización del código, nos dividimos el desarrollo de las clases y lógica de la siguiente manera:
 
 Matias Funes:
-
-Implementación de la clase base abstracta Entidad.
-
+1er Parcial:Implementación de la clase base abstracta Entidad.
 Desarrollo de la clase Planta.
+2do Parcial:Empaquete todo,hice el controlador y los Daos.
+Tuvo complicado con el tema de los dao porq no me daba cuenta pero se pudo,el controlador fue un poco mas facil.
 
 Manuel Molinero:
 
@@ -81,7 +81,18 @@ simulador de ecosistema - java
 		Sobrecarga: metodos para agregar entidades con diferentes parametros de entrada.  
 ------>Adjunto mi charla con la ia, use Gemini: https://gemini.google.com/share/0eb02163b5e6
 
-
+2DA INSTANCIA EVALUATIVA:
+desarrollo de la capa vista (panelreporte.java), logica de reportes, historial de conteos e integracion con el controlador.  
+ arquitectura del proyecto (mvc + dao)el proyecto se encuentra estructurado en cuatro capas totalmente independientes para evitar la mezcla de responsabilidades: 
+ modelo: contiene las clases base de la simulacion (entidad, animal, planta, conejo, lobo, ecosistema) junto con las interfaces reproducible y mortal. 
+ dao (data access object): encargado de la lectura y escritura del estado del ecosistema (entidades, turnos, clima) en archivos .txt de flujo plano sin conocer la vista ni el controlador. 
+ controlador: actua como puente. recibe las peticiones de la vista, ejecuta las acciones sobre el modelo, interactua con el dao y actualiza la interfaz sin contener codigo de swing.  
+vista: diseñada con netbeans swing. contiene los jframes, paneles y componentes visuales. los listeners solo delegan acciones al controlador sin procesar logica de negocio.  
+componentes swing utilizadosjmenubar: menu superior para la gestion de la simulacion y acceso directo a los reportes.
+jtabbedpane: usado en la pantalla de reportes para separar de forma limpia el resumen general del historial estadistico.jtable & jscrollpane: tabla dinamica envuelta en scroll para listar la evolucion de las poblaciones turno a turno. 
+jlabel: etiquetas para mostrar contadores, clima y turnos en tiempo real.  
+joptionpane: cuadros de dialogo para confirmar acciones criticas y alertas de colapso del sistema.  
+bonus implementadosvisualizacion de estadisticas en tiempo real: panel que registra y muestra el historial de conteos demograficos turno a turno, calculando de manera automatica los picos minimos y maximos de cada poblacion con su respectivo turno de ocurrencia. 
 Desarrollo del Main (Lógica Global)
 La clase Main fue desarrollada de manera colaborativa por todo el equipo. Debido a que esta clase integra todas las partes (Ecosistema, Animales y Plantas), trabajamos en conjunto para resolver las complicaciones surgidas con la ejecución de los ciclos de vida y la interacción de las entidades dentro del ecosistema.
 
