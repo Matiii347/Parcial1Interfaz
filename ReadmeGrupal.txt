@@ -45,7 +45,14 @@ Lo que me resulto más complicado del proyecto fue entender la interacción entr
 Esta fue mi conversación con ChatGPT para el proyecto: https://chatgpt.com/share/69ffe67e-b4b8-83e9-889e-9e10de51d439
 
 Valentin Gonzalez:
+Parcial 2:
+Participe en la implementacion y diseño de la segunda vista sumado a su comportamiento y funcionalidades.
 
+En esta segunda etapa hubo varias cosas que probe por primera vez pero considero que la mayor dificultad que tuve fue principalmente con la creacion y manejo de la grilla, principalmente porque se me complicaba el hecho de generar en cada turno una grilla distinta para mostrar visualmente los cambios de posiciónes de los seres del ecosistema.
+
+Esta fue mi conversación con Gemini para el proyecto: https://share.gemini.google/7kBAMrhbGUgg
+
+Parcial 1:
 Implementación de la clase concreta Lobo.
 
 Definición de la Interfaz Reproducible para el comportamiento de cría.
